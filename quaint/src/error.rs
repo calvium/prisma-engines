@@ -196,6 +196,12 @@ pub enum ErrorKind {
     #[error("Error creating a database connection.")]
     ConnectionError(Box<dyn std::error::Error + Send + Sync + 'static>),
 
+    #[error("Error fetching auth token: {}", _0)]
+    AuthTokenFetchFailure(Box<dyn std::error::Error + Send + Sync + 'static>),
+
+    #[error("Missing environment variable: {}", name)]
+    MissingEnvironmentVariable { name: String },
+
     #[error("Error reading the column value: {}", _0)]
     ColumnReadFailure(Box<dyn std::error::Error + Send + Sync + 'static>),
 
